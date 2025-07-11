@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.upgrade-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.current-status {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.status-card {
+    text-align: center;
+}
+
+.status-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.status-info {
+    color: #666;
+    font-size: 1rem;
+}
+
+.plans-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.plan-card {
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid #e0e0e0;
+}
+
+.plan-card:last-child {
+    border-right: none;
+}
+
+.plan-card.free {
+    background: #f8f9fa;
+}
+
+.plan-card.premium {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.recommended {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FF5722;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2196F3;
+}
+
+.plan-card.premium .price {
+    color: white;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 20px;
+    text-align: left;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.plan-card.premium .features li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.plan-status {
+    background: #e0e0e0;
+    color: #666;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.upgrade-info {
+    padding: 30px;
+}
+
+.info-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    border-left: 4px solid #2196F3;
+}
+
+.info-card h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.upgrade-description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+}
+
+.contact-info {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 2px solid #2196F3;
+}
+
+.wechat-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+.label {
+    color: #666;
+    font-weight: 500;
+}
+
+.wechat-id {
+    font-weight: bold;
+    color: #2196F3;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.copy-btn {
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #1976D2;
+    transform: translateY(-1px);
+}
+
+.service-features h4,
+.upgrade-steps h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.service-features ul,
+.upgrade-steps ol {
+    color: #666;
+    line-height: 1.8;
+}
+
+.service-features li {
+    margin-bottom: 8px;
+}
+
+.upgrade-steps {
+    margin-top: 20px;
+}
+
+.upgrade-steps li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.action-buttons {
+    padding: 30px;
+    background: #f8f9fa;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.contact-btn,
+.back-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.back-btn {
+    background: #e0e0e0;
+    color: #666;
+}
+
+.back-btn:hover {
+    background: #d0d0d0;
+    transform: translateY(-1px);
+}
+
+.message {
+    padding: 15px 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .plans-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-card {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .plan-card:last-child {
+        border-bottom: none;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .upgrade-info,
+    .action-buttons {
+        padding: 20px;
+    }
+    
+    .info-card {
+        padding: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .wechat-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

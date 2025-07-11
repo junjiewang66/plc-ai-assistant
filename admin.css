@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #FF5722 0%, #D84315 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.header p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.auth-section {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    border: 2px solid #e0e0e0;
+}
+
+.auth-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.admin-panel {
+    padding: 30px;
+}
+
+.panel-section {
+    margin-bottom: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+    background: #f8f9fa;
+}
+
+.panel-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 8px;
+}
+
+.action-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #2196F3;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.auth-btn,
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 80px;
+}
+
+.auth-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FF5722 0%, #D84315 100%);
+    color: white;
+}
+
+.action-btn.premium {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.action-btn.questions {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+}
+
+.auth-btn:hover,
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-btn:disabled,
+.action-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loader {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.quick-actions {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.quick-action-card h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.quick-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.quick-btn {
+    background: #e3f2fd;
+    color: #1976D2;
+    border: 1px solid #bbdefb;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-btn:hover {
+    background: #bbdefb;
+    transform: translateY(-1px);
+}
+
+.quick-note {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.info-list {
+    list-style: none;
+    color: #555;
+}
+
+.info-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.5;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.message {
+    padding: 15px 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border-top: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border-top: 1px solid #f5c6cb;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-top: 1px solid #bee5eb;
+}
+
+.back-section {
+    padding: 20px 30px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.back-btn {
+    background: #e0e0e0;
+    color: #666;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #d0d0d0;
+    transform: translateY(-1px);
+}
+
+/* 用户列表样式 */
+.user-list-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.user-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+}
+
+.user-count {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.user-table-container {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.user-table th {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 2px solid #e0e0e0;
+    white-space: nowrap;
+}
+
+.user-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.user-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.loading-text {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px !important;
+}
+
+.user-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.user-status.free {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.user-status.premium {
+    background: #d4edda;
+    color: #155724;
+}
+
+.questions-remaining {
+    font-weight: 600;
+}
+
+.questions-remaining.low {
+    color: #dc3545;
+}
+
+.questions-remaining.medium {
+    color: #ffc107;
+}
+
+.questions-remaining.high {
+    color: #28a745;
+}
+
+.questions-remaining.unlimited {
+    color: #6f42c1;
+}
+
+.action-buttons-inline {
+    display: flex;
+    gap: 5px;
+}
+
+.quick-action-btn {
+    background: #e3f2fd;
+    color: #1976D2;
+    border: 1px solid #bbdefb;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+    background: #bbdefb;
+}
+
+.quick-action-btn.premium {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+.quick-action-btn.premium:hover {
+    background: #c8e6c9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .admin-container {
+        border-radius: 10px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .auth-section,
+    .admin-panel {
+        padding: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .quick-buttons {
+        flex-direction: column;
+    }
+    
+    .quick-btn {
+        border-radius: 6px;
+    }
+}

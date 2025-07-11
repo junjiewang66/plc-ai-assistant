@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>升级账户 - PLC编程助手</title>
+    <link rel="stylesheet" href="upgrade.css">
+</head>
+<body>
+    <div class="container">
+        <div class="upgrade-container">
+            <div class="header">
+                <h1>升级账户</h1>
+                <p>解锁完整的PLC编程助手服务</p>
+            </div>
+            
+            <div class="current-status" id="currentStatus">
+                <div class="status-card">
+                    <h3>当前账户状态</h3>
+                    <div class="status-info">
+                        <span id="userInfo">正在加载...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plans-container">
+                <div class="plan-card free">
+                    <h3>免费版</h3>
+                    <div class="price">¥0</div>
+                    <ul class="features">
+                        <li>✓ 2次免费提问</li>
+                        <li>✓ 基础PLC编程咨询</li>
+                        <li>✗ 无限制提问</li>
+                        <li>✗ 高级技术支持</li>
+                    </ul>
+                    <div class="plan-status">当前版本</div>
+                </div>
+                
+                <div class="plan-card premium">
+                    <div class="recommended">推荐</div>
+                    <h3>完整版</h3>
+                    <div class="price">联系开通</div>
+                    <ul class="features">
+                        <li>✓ 多次提问</li>
+                        <li>✓ 专业PLC编程咨询</li>
+                        <li>✓ 多品牌PLC支持</li>
+                        <li>✓ 优先技术支持</li>
+                        <li>✓ 实际项目案例分析</li>
+                        <li>✓ 一对一技术指导</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="upgrade-info">
+                <div class="info-card">
+                    <h3>🎓 专业服务升级说明</h3>
+                    <div class="upgrade-content">
+                        <p class="upgrade-description">
+                            使用这款专用的PLC编程工具，请添加王俊杰老师的微信号开通完整服务。
+                        </p>
+                        
+                        <div class="contact-info">
+                            <div class="wechat-info">
+                                <span class="label">微信号：</span>
+                                <span class="wechat-id">dream666333</span>
+                                <button class="copy-btn" onclick="copyWeChatId()">复制</button>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="upgrade-steps">
+                            <h4>开通步骤：</h4>
+                            <ol>
+                                <li>添加微信号：<strong>dream666333</strong></li>
+                                <li>说明您要开通PLC编程助手完整服务</li>
+                                <li>完成付款后即可享受无限制服务</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="contact-btn" onclick="copyWeChatId()">
+                    📱 复制微信号
+                </button>
+                <button class="back-btn" onclick="goBack()">
+                    ← 返回主页
+                </button>
+            </div>
+            
+            <div class="message" id="message" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="upgrade.js"></script>
+</body>
+</html>

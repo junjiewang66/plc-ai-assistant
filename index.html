@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLC编程助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>PLC编程助手 - 俊杰工控PLC</h1>
+                    <p>专业的PLC编程AI辅助工具</p>
+                </div>
+                <div class="user-info">
+                    <div class="user-details">
+                        <span id="userWelcome">欢迎，用户</span>
+                        <span id="questionStatus" class="question-status">剩余问题：-</span>
+                    </div>
+                    <div class="user-actions">
+                        <button id="upgradeBtn" class="upgrade-btn hidden">升级账户</button>
+                        <button id="logoutBtn" class="logout-btn">退出登录</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message assistant-message">
+                    <div class="message-content">
+                        您好！我是专门为解决PLC编程问题而研发的AI编程工具。请问您有什么PLC编程相关的问题需要帮助吗？
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="请输入您的PLC编程问题..."
+                        rows="3"
+                    ></textarea>
+                    <button id="sendButton" type="button">
+                        <span id="sendText">发送</span>
+                        <span id="sendLoader" class="loader hidden">发送中...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="responseTimer" class="timer hidden">
+            AI正在思考中... <span id="timerDisplay">0</span>秒
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

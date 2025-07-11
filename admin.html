@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台 - PLC编程助手</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="admin-container">
+            <div class="header">
+                <h1>管理员后台</h1>
+                <p>用户问题次数管理</p>
+            </div>
+            
+            <div class="auth-section" id="authSection">
+                <div class="auth-card">
+                    <h3>管理员验证</h3>
+                    <form id="adminAuthForm">
+                        <div class="form-group">
+                            <label for="adminKey">管理员密钥</label>
+                            <input type="password" id="adminKey" placeholder="请输入管理员密钥" required>
+                        </div>
+                        <button type="submit" class="auth-btn">
+                            <span id="authBtnText">验证身份</span>
+                            <span id="authLoader" class="loader hidden">验证中...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="admin-panel hidden" id="adminPanel">
+                <div class="panel-section">
+                    <h3>💳 设置付费用户</h3>
+                    <div class="action-card">
+                        <form id="premiumForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="premiumUsername">用户名</label>
+                                    <input type="text" id="premiumUsername" placeholder="输入用户名" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="premiumAction">操作</label>
+                                    <select id="premiumAction" required>
+                                        <option value="">选择操作</option>
+                                        <option value="true">设为付费用户（无限制）</option>
+                                        <option value="false">取消付费用户</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="action-btn premium">
+                                    <span id="premiumBtnText">设置</span>
+                                    <span id="premiumLoader" class="loader hidden">处理中...</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>🎫 增加问题次数</h3>
+                    <div class="action-card">
+                        <form id="questionsForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="questionsUsername">用户名</label>
+                                    <input type="text" id="questionsUsername" placeholder="输入用户名" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="questionsCount">增加次数</label>
+                                    <input type="number" id="questionsCount" placeholder="输入数字" min="1" required>
+                                </div>
+                                <button type="submit" class="action-btn questions">
+                                    <span id="questionsBtnText">增加</span>
+                                    <span id="questionsLoader" class="loader hidden">处理中...</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>📊 快速操作</h3>
+                    <div class="quick-actions">
+                        <div class="quick-action-card">
+                            <h4>常用设置</h4>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" onclick="quickAction('user1', 10)">
+                                    示例：给用户增加10次
+                                </button>
+                                <button class="quick-btn" onclick="quickPremium('user1', true)">
+                                    示例：设为付费用户
+                                </button>
+                            </div>
+                            <p class="quick-note">
+                                💡 提示：直接修改上面的用户名和次数即可快速操作
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>👥 用户列表</h3>
+                    <div class="user-list-container">
+                        <div class="user-list-header">
+                            <button class="refresh-btn" onclick="loadUserList()">
+                                🔄 刷新列表
+                            </button>
+                            <span id="userCount" class="user-count">总用户数：-</span>
+                        </div>
+                        
+                        <div class="user-table-container">
+                            <table class="user-table" id="userTable">
+                                <thead>
+                                    <tr>
+                                        <th>用户名</th>
+                                        <th>密码状态</th>
+                                        <th>邮箱</th>
+                                        <th>剩余问题</th>
+                                        <th>用户类型</th>
+                                        <th>注册时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userTableBody">
+                                    <tr>
+                                        <td colspan="7" class="loading-text">点击刷新按钮加载用户列表</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>ℹ️ 操作说明</h3>
+                    <div class="info-card">
+                        <ul class="info-list">
+                            <li><strong>设置付费用户：</strong>付费用户享有无限制提问权限</li>
+                            <li><strong>增加问题次数：</strong>为免费用户增加指定数量的提问次数</li>
+                            <li><strong>管理员密钥：</strong>plc-admin-2024</li>
+                            <li><strong>操作记录：</strong>所有操作都会实时更新数据库</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="message" id="message" style="display: none;"></div>
+            
+            <div class="back-section">
+                <button class="back-btn" onclick="goBack()">
+                    ← 返回主页
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>
