@@ -28,6 +28,13 @@ class AdminManager {
         this.questionsBtnText = document.getElementById('questionsBtnText');
         this.questionsLoader = document.getElementById('questionsLoader');
         
+        // 减少问题次数设置
+        this.reduceQuestionsForm = document.getElementById('reduceQuestionsForm');
+        this.reduceQuestionsUsername = document.getElementById('reduceQuestionsUsername');
+        this.questionsToReduce = document.getElementById('questionsToReduce');
+        this.reduceBtnText = document.getElementById('reduceBtnText');
+        this.reduceLoader = document.getElementById('reduceLoader');
+        
         // 消息显示
         this.messageElement = document.getElementById('message');
     }
@@ -46,6 +53,11 @@ class AdminManager {
         this.questionsForm.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleQuestionsUpdate();
+        });
+        
+        this.reduceQuestionsForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleReduceQuestions();
         });
     }
     
@@ -157,6 +169,46 @@ class AdminManager {
         this.setQuestionsLoading(false);
     }
     
+    async handleReduceQuestions() {
+        const username = this.reduceQuestionsUsername.value.trim();
+        const questionsToReduce = parseInt(this.questionsToReduce.value);
+        
+        if (!username || !questionsToReduce || questionsToReduce < 1) {
+            this.showMessage('请正确填写用户名和减少次数', 'error');
+            return;
+        }
+        
+        this.setReduceLoading(true);
+        
+        try {
+            const response = await fetch('/api/admin/update-questions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    adminKey: this.adminKey,
+                    username: username,
+                    questionsToReduce: questionsToReduce
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.showMessage(`成功为用户 ${username} 减少 ${questionsToReduce} 次提问`, 'success');
+                this.reduceQuestionsForm.reset();
+            } else {
+                this.showMessage(data.message, 'error');
+            }
+        } catch (error) {
+            console.error('更新失败:', error);
+            this.showMessage('网络错误，请重试', 'error');
+        }
+        
+        this.setReduceLoading(false);
+    }
+    
     setAuthLoading(loading) {
         const btn = this.adminAuthForm.querySelector('.auth-btn');
         btn.disabled = loading;
@@ -176,6 +228,13 @@ class AdminManager {
         btn.disabled = loading;
         this.questionsBtnText.classList.toggle('hidden', loading);
         this.questionsLoader.classList.toggle('hidden', !loading);
+    }
+    
+    setReduceLoading(loading) {
+        const btn = this.reduceQuestionsForm.querySelector('.action-btn');
+        btn.disabled = loading;
+        this.reduceBtnText.classList.toggle('hidden', loading);
+        this.reduceLoader.classList.toggle('hidden', !loading);
     }
     
     showMessage(message, type = 'info') {
@@ -357,6 +416,9 @@ function displayUserList(users) {
                         <button class="quick-action-btn" onclick="quickAddQuestions('${escapeHtml(user.username)}')">
                             +问题
                         </button>
+                        <button class="quick-action-btn" onclick="quickReduceQuestions('${escapeHtml(user.username)}')">
+                            -问题
+                        </button>
                         <button class="quick-action-btn premium" onclick="togglePremium('${escapeHtml(user.username)}', ${!user.is_premium})">
                             ${user.is_premium ? '取消付费' : '设为付费'}
                         </button>
@@ -397,6 +459,43 @@ async function quickAddQuestions(username) {
         
         if (data.success) {
             alert(`成功为用户 ${username} 增加 ${count} 次提问`);
+            loadUserList(); // 刷新列表
+        } else {
+            alert(`操作失败: ${data.message}`);
+        }
+    } catch (error) {
+        alert('网络错误，请重试');
+    }
+}
+
+// 快速减少问题次数
+async function quickReduceQuestions(username) {
+    const count = prompt(`为用户 "${username}" 减少问题次数:`, '1');
+    if (!count || isNaN(count) || parseInt(count) < 1) return;
+    
+    const adminManager = window.adminManagerInstance;
+    if (!adminManager || !adminManager.adminKey) {
+        alert('管理员权限验证失败');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/api/admin/update-questions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                adminKey: adminManager.adminKey,
+                username: username,
+                questionsToReduce: parseInt(count)
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alert(`成功为用户 ${username} 减少 ${count} 次提问`);
             loadUserList(); // 刷新列表
         } else {
             alert(`操作失败: ${data.message}`);
