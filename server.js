@@ -312,7 +312,7 @@ app.post('/api/use-question', authenticateToken, async (req, res) => {
 
 // 路由：管理员更新用户问题次数
 app.post('/api/admin/update-questions', async (req, res) => {
-    const { adminKey, username, questionsToAdd, setPremium } = req.body;
+    const { adminKey, username, questionsToAdd, questionsToReduce, setPremium } = req.body;
     
     // 简单的管理员验证
     if (adminKey !== (process.env.ADMIN_KEY || 'plc-admin-2024')) {
@@ -341,6 +341,10 @@ app.post('/api/admin/update-questions', async (req, res) => {
             // 增加问题次数
             query = 'UPDATE users SET questions_remaining = questions_remaining + $1 WHERE username = $2';
             params = [parseInt(questionsToAdd), username];
+        } else if (questionsToReduce !== undefined) {
+            // 减少问题次数
+            query = 'UPDATE users SET questions_remaining = GREATEST(0, questions_remaining - $1) WHERE username = $2';
+            params = [parseInt(questionsToReduce), username];
         } else {
             return res.status(400).json({ 
                 success: false, 
