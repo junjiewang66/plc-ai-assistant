@@ -80,6 +80,28 @@
                 </div>
                 
                 <div class="panel-section">
+                    <h3>🎫 减少问题次数</h3>
+                    <div class="action-card">
+                        <form id="reduceQuestionsForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="reduceQuestionsUsername">用户名</label>
+                                    <input type="text" id="reduceQuestionsUsername" placeholder="输入用户名" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="questionsToReduce">减少次数</label>
+                                    <input type="number" id="questionsToReduce" placeholder="输入数字" min="1" required>
+                                </div>
+                                <button type="submit" class="action-btn reduce">
+                                    <span id="reduceBtnText">减少</span>
+                                    <span id="reduceLoader" class="loader hidden">处理中...</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="panel-section">
                     <h3>📊 快速操作</h3>
                     <div class="quick-actions">
                         <div class="quick-action-card">
