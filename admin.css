@@ -156,6 +156,11 @@ body {
     color: white;
 }
 
+.action-btn.reduce {
+    background: linear-gradient(135deg, #FF5722 0%, #D84315 100%);
+    color: white;
+}
+
 .auth-btn:hover,
 .action-btn:hover {
     transform: translateY(-2px);
